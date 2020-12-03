@@ -1,11 +1,15 @@
 
 
+reg = r"(\d+)-(\d+) (\w): (\w+)"
+
+
 function is_password_valid(l)
-    parts = split(l)
-    nums = parse.(Int, split(parts[1], '-'))
-    c = parts[2][1]
-    x = count(x -> x == c, parts[3])
-    nums[1] <= x <= nums[2]
+    m = match(reg, l)
+    a = parse(Int, m.captures[1])
+    b = parse(Int, m.captures[2])
+    c = m.captures[3][1]
+    x = count(x -> x == c, m.captures[4])
+    a <= x <= b
 end
 
 
@@ -17,10 +21,11 @@ end
 
 
 function is_password_valid2(l)
-    parts = split(l)
-    (a, b) = parse.(Int, split(parts[1], '-'))
-    c = parts[2][1]
-    parts[3][a] == c && parts[3][b] != c || parts[3][a] != c && parts[3][b] == c
+    m = match(reg, l)
+    a = parse(Int, m.captures[1])
+    b = parse(Int, m.captures[2])
+    c = m.captures[3][1]
+    count(i -> m.captures[4][i] == c, (a, b)) == 1
 end
 
 
