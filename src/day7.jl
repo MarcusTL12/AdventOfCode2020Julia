@@ -10,7 +10,8 @@ function part1()
             m = match(reg1, l)
             m.captures[1] => [begin
                 parse(Int, m.captures[1]), m.captures[2]
-            end for m in eachmatch(reg2, m.captures[2])]
+            end::Tuple{Int,SubString{String}}
+            for m in eachmatch(reg2, m.captures[2])]
         end for l in eachline(io))
     end
     
@@ -39,7 +40,8 @@ function part2()
             m = match(reg1, l)
             m.captures[1] => [begin
                 parse(Int, m.captures[1]), m.captures[2]
-            end for m in eachmatch(reg2, m.captures[2])]
+            end::Tuple{Int,SubString{String}}
+            for m in eachmatch(reg2, m.captures[2])]
         end for l in eachline(io))
     end
     
