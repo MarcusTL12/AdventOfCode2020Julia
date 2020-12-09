@@ -2,11 +2,9 @@ using Base.Iterators
 
 
 function is_sum(nums, n)
-    for i in 1:length(nums)
-        for j in i + 1:length(nums)
-            if nums[i] + nums[j] == n
-                return true
-            end
+    for i in 1:length(nums), j in i + 1:length(nums)
+        if nums[i] + nums[j] == n
+            return true
         end
     end
     false
