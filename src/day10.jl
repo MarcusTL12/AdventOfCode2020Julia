@@ -39,7 +39,8 @@ function part2()
     for i in length(adapters) - 1:-1:1
         tmp = 0
         for j in 1:3
-            if i + j <= length(adapters) && 1 <= adapters[i + j] - adapters[i] <= 3
+            if i + j <= length(adapters) &&
+                1 <= adapters[i + j] - adapters[i] <= 3
                 tmp += amt_combs_from_ind[i + j]
             end
         end
